@@ -1415,6 +1415,12 @@ StatusObjCmd(clientData, interp, objc, objv)
 	Tcl_ListObjAppendElement(interp, objPtr,
 		Tcl_NewStringObj(SSL_get_cipher(statePtr->ssl), -1));
     }
+
+    Tcl_ListObjAppendElement(interp, objPtr,
+	Tcl_NewStringObj("version", -1));
+    Tcl_ListObjAppendElement(interp, objPtr,
+	Tcl_NewStringObj(SSL_get_version(statePtr->ssl), -1));
+
     Tcl_SetObjResult( interp, objPtr);
     return TCL_OK;
     	clientData = clientData;
